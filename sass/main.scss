@@ -1,0 +1,145 @@
+// Fixed the SVG image (illustration-woman-online-mobile.svg).
+:root {
+  --cl-gradient-violet: #af67e9;
+  --cl-gradient-blue: #6565e7;
+  --cl-gray: #e7e7e9;
+  --cl-gray-dark: #787887;
+  --cl-red: #f47c57;
+}
+
+$bp-desc: 56.25em; // 900px
+
+// JS classes
+.hidden {
+  display: none;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Kumbh Sans", sans-serif;
+  background: linear-gradient(
+    to bottom,
+    var(--cl-gradient-violet),
+    var(--cl-gradient-blue)
+  );
+  min-height: 100vh;
+  font-size: 1.2rem;
+  padding: 2.5rem;
+  display: grid;
+  align-items: center;
+}
+
+.faq {
+  background-color: #fff;
+  padding: 13rem 2rem 3rem 2rem; //REFACTORING
+  border-radius: 2rem;
+  position: relative;
+
+  @media only screen and (min-width: $bp-desc) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  &__image {
+    position: absolute;
+    top: -11rem;
+    right: 0;
+    left: 0;
+    width: 24rem;
+    margin: 0 auto;
+
+    @media only screen and (min-width: $bp-desc) {
+      position: relative;
+    }
+
+    &::before {
+      content: "";
+      height: 10rem;
+      width: 24rem;
+      position: absolute;
+      top: 11rem;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      background-repeat: no-repeat;
+      background-image: url("../images/bg-pattern-mobile.svg");
+    }
+  }
+  // .faq__title
+  &__title {
+    text-align: center;
+    margin-bottom: 4rem;
+    font-size: 3rem;
+  }
+
+  // .faq__list
+  &__list {
+    list-style: none;
+    display: grid;
+    grid-gap: 2rem;
+  }
+
+  // .faq__item
+  &__item {
+    border-bottom: 1px solid var(--cl-gray);
+    padding-bottom: 1.5rem;
+    position: relative;
+    cursor: pointer;
+    transition: 0.2s all;
+
+    &:hover {
+      color: var(--cl-red);
+    }
+
+    &::before {
+      content: "";
+      width: 1rem;
+      height: 100%;
+      background-image: url(../images/icon-arrow-down.svg);
+      background-repeat: no-repeat;
+      position: absolute;
+      transform-origin: top;
+      right: 0;
+    }
+
+    &--change {
+      &::before {
+        content: "";
+        width: 1rem;
+        height: 100%;
+        background-image: url(../images/icon-arrow-down.svg);
+        background-repeat: no-repeat;
+        position: absolute;
+        transform-origin: top;
+        transform: rotate(-180deg);
+        right: 0;
+      }
+    }
+  }
+
+  // .faq__item--sub
+
+  &__item--sub {
+    color: var(--cl-gray-dark);
+    padding-top: 1rem;
+  }
+}
